@@ -5,30 +5,30 @@ export default class LoginPage {
 
     }
 
+    public username = this.page.getByPlaceholder('Email')
+    public password = this.page.getByPlaceholder('Password')
+    public login_button = this.page.getByRole('button', { name: 'Log in' })
+
     async enterUsername(username: string) {
-        await this.page.getByPlaceholder('Email')
-            .fill(username);
+        await this.username.fill(username)
     }
 
     async enterPassword(password: string) {
-        await this.page.getByPlaceholder('Password')
-            .fill(password);
+        await this.password.fill(password)
+
     }
 
     async clickLogin() {
-        this.page.getByRole('button', { name: 'Log in' })
-            .click()
+        await Promise.all([
+            //this.page.waitForNavigation({waitUntil: "networkidle"}),
+            this.login_button.click()
+        ])
     }
 
     async login(username: string, password: string) {
-        await this.page.getByPlaceholder('Email')
-            .fill(username);
-
-        await this.page.getByPlaceholder('Password')
-            .fill(password); 
-
-        await this.page.getByRole('button', { name: 'Log in' })
-            .click()
+        await this.username.fill(username)
+        await this.password.fill(password)
+        await this.login_button.click()
     }
 
     async checkIfLoginSuccess() {
