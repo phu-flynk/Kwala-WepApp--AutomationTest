@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import DashboardPage from '../pages/dashboardPage';
 
 export default class LoginPage {
     constructor(public page: Page) {
@@ -20,8 +21,7 @@ export default class LoginPage {
 
     async clickLogin() {
         await Promise.all([
-            //this.page.waitForNavigation({waitUntil: "networkidle"}),
-            this.login_button.click()
+            this.login_button.click(),
         ])
     }
 

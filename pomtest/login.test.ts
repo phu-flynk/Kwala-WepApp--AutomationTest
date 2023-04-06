@@ -1,7 +1,6 @@
 import { chromium, expect, test } from '@playwright/test';
 import LoginPage from '../pages/loginPage';
-import loginPage from "../pages/loginPage"
-import  * as Actions from "../base/actions";
+import * as Actions from "../base/actions";
 
 const username = "flynksysadmin@flynk.dev";
 const password = "12345678aA@";
